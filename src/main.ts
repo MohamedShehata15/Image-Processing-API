@@ -21,5 +21,3 @@ app.route(new ImageRouter());
  * Start Application
  */
 app.listen(4000);
-
-export default app;

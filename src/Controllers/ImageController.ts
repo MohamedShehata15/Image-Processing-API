@@ -7,7 +7,7 @@ export class ImageController {
    private fullImagesPath = path.resolve(__dirname, '../../assets/full');
    private thumbImagesPath = path.resolve(__dirname, '../../assets/thumb');
 
-   instructions = (req: Request, res: Response) => {
+   instructions = (req: Request, res: Response): Response => {
       return res.status(200).json({
          message:
             'Url like this => http://localhost:4000/images?filename=fjord&width=200&height=200'
@@ -18,7 +18,10 @@ export class ImageController {
     * Get Image
     */
 
-   getImage = async (req: Request, res: Response) => {
+   getImage = async (
+      req: Request,
+      res: Response
+   ): Promise<Response | unknown> => {
       const imgName: string = req.query.filename as string;
       const imgWidth: number = req.query.width as unknown as number;
       const imgHeight: number = req.query.height as unknown as number;
@@ -40,7 +43,7 @@ export class ImageController {
          );
       }
 
-      res.status(200).sendFile(imagePath);
+      return res.status(200).sendFile(imagePath);
    };
 
    /**

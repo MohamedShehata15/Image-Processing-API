@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 
 import { AppMiddleware } from './../core/Interfaces/AppMiddleware.Interface';
 
 export class QueryValidator implements AppMiddleware {
-   getMiddleware() {
+   getMiddleware(): RequestHandler {
       return (
          req: Request,
          res: Response,
